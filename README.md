@@ -1,2 +1,2 @@
 # goroutine-examples
-Examples about goroutines
+These repo shows examples about goroutines
