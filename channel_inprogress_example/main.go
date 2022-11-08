@@ -5,15 +5,15 @@ import (
 	"time"
 )
 
-func worker(done chan bool) {
-	fmt.Print("working...")
-	time.Sleep(time.Second)
-	fmt.Println("done")
+func doTask(done chan bool) {
+	fmt.Println("Start Task...")
+	time.Sleep(2 * time.Second)
+	fmt.Println("Finish task...")
 	done <- true
 }
 
 func main() {
 	done := make(chan bool)
-	go worker(done)
+	go doTask(done)
 	<-done
 }
