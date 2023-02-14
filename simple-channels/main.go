@@ -8,7 +8,10 @@ import (
 // Show it is only receiver channel with <-chan. Otherwise to show only send channel with chan<-
 func shout(ping <-chan string, pong chan<- string) {
 	for {
-		s := <-ping
+		s, ok := <-ping
+		if !ok {
+			// do something
+		}
 		pong <- fmt.Sprintf("%s!!!", strings.ToUpper(s))
 	}
 }
