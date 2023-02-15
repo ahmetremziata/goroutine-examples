@@ -29,7 +29,7 @@ func main() {
 	go server1(channel1)
 	go server2(channel2)
 
-	// If one of more same channels fit, then one of channel can be selected
+	// If one of more same channels fit, then one of channel can be selected randomly
 	for {
 		select {
 		case s1 := <-channel1:
@@ -40,12 +40,9 @@ func main() {
 			fmt.Println("Case three", s3)
 		case s4 := <-channel2:
 			fmt.Println("Case four", s4)
-		default:
+			// default:
 			// avoiding deadlock
 		}
 
 	}
-
-	close(channel1)
-	close(channel2)
 }
